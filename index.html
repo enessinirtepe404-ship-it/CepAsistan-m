@@ -3,124 +3,280 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#0f172a">
+
 <title>Cep Asistanım</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
-    font-family:Arial,sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 }
 
 body{
-    background:#f2f4f8;
-    color:#111;
+    background:#f1f5f9;
+    color:#0f172a;
     transition:.3s;
 }
 
 body.dark{
-    background:#101318;
-    color:#fff;
+    background:#080b12;
+    color:#f8fafc;
 }
 
-header{
-    background:linear-gradient(135deg,#111827,#2563eb);
+/* HEADER */
+
+.header{
+    padding:28px 20px 30px;
+    background:linear-gradient(135deg,#0f172a,#1d4ed8);
     color:white;
-    padding:25px 18px;
-    text-align:center;
-    border-radius:0 0 25px 25px;
+    border-radius:0 0 32px 32px;
+    box-shadow:0 10px 30px #0003;
 }
 
-header h1{
+.header-inner{
+    max-width:900px;
+    margin:auto;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:25px;
+}
+
+.logo-icon{
+    width:48px;
+    height:48px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:27px;
+    background:#ffffff20;
+    backdrop-filter:blur(10px);
+}
+
+.logo h1{
+    font-size:24px;
+}
+
+.logo p{
+    font-size:13px;
+    opacity:.7;
+    margin-top:3px;
+}
+
+/* HERO */
+
+.hero{
+    margin-bottom:22px;
+}
+
+.hero h2{
     font-size:28px;
     margin-bottom:8px;
 }
 
-header p{
-    opacity:.85;
+.hero p{
+    opacity:.75;
+    font-size:14px;
 }
 
-.top{
-    max-width:700px;
-    margin:18px auto;
-    padding:0 15px;
+/* SEARCH */
+
+.search-box{
+    position:relative;
 }
 
-.search{
+.search-box input{
     width:100%;
-    padding:15px;
+    height:54px;
     border:0;
-    border-radius:15px;
-    font-size:16px;
-    box-shadow:0 4px 15px #0001;
-    outline:none;
+    outline:0;
+    border-radius:17px;
+    padding:0 18px 0 48px;
+    font-size:15px;
+    background:white;
+    box-shadow:0 8px 25px #0002;
 }
 
-.buttons{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    margin-top:12px;
+.search-icon{
+    position:absolute;
+    left:17px;
+    top:17px;
+    font-size:19px;
 }
 
-.buttons button{
-    border:0;
-    border-radius:12px;
-    padding:10px 16px;
-    cursor:pointer;
-}
+/* MAIN */
 
 .container{
     max-width:900px;
     margin:auto;
-    padding:10px 15px 40px;
+    padding:22px 15px 50px;
 }
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:14px;
+/* QUICK */
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:13px;
 }
 
-.card{
+.section-title h3{
+    font-size:18px;
+}
+
+.section-title span{
+    font-size:12px;
+    opacity:.5;
+}
+
+/* QUICK CARDS */
+
+.quick{
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    padding-bottom:8px;
+    margin-bottom:25px;
+}
+
+.quick::-webkit-scrollbar{
+    display:none;
+}
+
+.quick-card{
+    min-width:130px;
+    padding:17px;
+    border-radius:19px;
     background:white;
-    padding:20px 12px;
-    border-radius:20px;
-    text-align:center;
+    box-shadow:0 6px 20px #0000000d;
     cursor:pointer;
-    box-shadow:0 5px 18px #00000012;
     transition:.2s;
 }
 
-.card:hover{
+.quick-card:hover{
     transform:translateY(-3px);
 }
 
-.card .icon{
-    font-size:32px;
-    margin-bottom:8px;
+.quick-card .icon{
+    font-size:25px;
+    margin-bottom:10px;
 }
 
-.card h3{
-    font-size:16px;
+.quick-card strong{
+    font-size:13px;
 }
 
-.dark .card{
-    background:#1b2029;
+/* CATEGORIES */
+
+.categories{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    margin-bottom:18px;
 }
+
+.categories::-webkit-scrollbar{
+    display:none;
+}
+
+.category{
+    white-space:nowrap;
+    border:0;
+    background:white;
+    padding:10px 15px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:13px;
+    box-shadow:0 3px 12px #0000000c;
+}
+
+.category.active{
+    background:#2563eb;
+    color:white;
+}
+
+/* TOOLS */
+
+.tools{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:13px;
+}
+
+.card{
+    position:relative;
+    background:white;
+    border-radius:22px;
+    padding:20px 15px;
+    min-height:145px;
+    box-shadow:0 6px 20px #0000000c;
+    cursor:pointer;
+    transition:.2s;
+    overflow:hidden;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 30px #0002;
+}
+
+.card .tool-icon{
+    width:48px;
+    height:48px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    background:#eff6ff;
+    margin-bottom:14px;
+}
+
+.card h4{
+    font-size:15px;
+    margin-bottom:5px;
+}
+
+.card p{
+    font-size:11px;
+    opacity:.5;
+    line-height:1.4;
+}
+
+.star{
+    position:absolute;
+    right:13px;
+    top:13px;
+    border:0;
+    background:transparent;
+    font-size:19px;
+    cursor:pointer;
+    opacity:.5;
+}
+
+.star.favorite{
+    opacity:1;
+}
+
+/* TOOL SCREEN */
 
 .tool{
     display:none;
-    background:white;
     margin-top:20px;
-    padding:20px;
-    border-radius:20px;
-    box-shadow:0 5px 18px #00000012;
-}
-
-.dark .tool{
-    background:#1b2029;
+    padding:22px;
+    border-radius:23px;
+    background:white;
+    box-shadow:0 8px 25px #00000010;
 }
 
 .tool.active{
@@ -128,183 +284,459 @@ header p{
 }
 
 .tool h2{
-    margin-bottom:15px;
+    margin-bottom:18px;
 }
 
-input,select{
+.tool input,
+.tool select{
     width:100%;
-    padding:13px;
+    padding:14px;
+    border:1px solid #dbe1ea;
+    border-radius:12px;
     margin:6px 0;
-    border:1px solid #ddd;
-    border-radius:10px;
-    font-size:16px;
+    outline:0;
+    font-size:15px;
 }
 
-button.action{
+.action{
     width:100%;
-    padding:13px;
-    margin-top:8px;
     border:0;
-    border-radius:10px;
+    border-radius:12px;
+    padding:14px;
+    margin-top:8px;
     background:#2563eb;
     color:white;
-    font-size:16px;
+    font-size:15px;
     cursor:pointer;
+}
+
+.back{
+    background:#64748b;
 }
 
 .result{
     margin-top:15px;
-    padding:13px;
-    border-radius:10px;
-    background:#eef2ff;
-    font-weight:bold;
-}
-
-.dark .result{
-    background:#252d3a;
-}
-
-.back{
-    background:#6b7280 !important;
+    padding:14px;
+    background:#eff6ff;
+    border-radius:12px;
+    line-height:1.7;
+    font-weight:600;
 }
 
 #qrcode{
     text-align:center;
-    margin-top:20px;
+    margin-top:18px;
 }
 
 #qrcode img{
-    max-width:220px;
-    border-radius:10px;
+    width:220px;
+    max-width:100%;
+    border-radius:12px;
 }
+
+/* DARK */
+
+.dark .quick-card,
+.dark .category,
+.dark .card,
+.dark .tool{
+    background:#151a23;
+    color:white;
+}
+
+.dark .search-box input{
+    background:#151a23;
+    color:white;
+}
+
+.dark .card .tool-icon{
+    background:#1e293b;
+}
+
+.dark .tool input,
+.dark .tool select{
+    background:#0f141c;
+    color:white;
+    border-color:#303846;
+}
+
+.dark .result{
+    background:#1e293b;
+}
+
+/* FOOTER */
 
 footer{
     text-align:center;
-    padding:25px;
-    opacity:.6;
+    padding:20px;
+    font-size:12px;
+    opacity:.45;
 }
 
-@media(max-width:500px){
-    .cards{
-        grid-template-columns:repeat(2,1fr);
+/* DESKTOP */
+
+@media(min-width:650px){
+
+    .tools{
+        grid-template-columns:repeat(3,1fr);
     }
+
 }
+
+/* MOBILE */
+
+@media(max-width:500px){
+
+    .header{
+        padding-top:24px;
+    }
+
+    .hero h2{
+        font-size:25px;
+    }
+
+    .card{
+        min-height:140px;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>⚡ Cep Asistanım</h1>
-    <p>Günlük hayatını kolaylaştıran araçlar</p>
+<!-- HEADER -->
+
+<header class="header">
+
+<div class="header-inner">
+
+<div class="logo">
+
+<div class="logo-icon">
+⚡
+</div>
+
+<div>
+<h1>Cep Asistanım</h1>
+<p>Günlük hayatın için akıllı araçlar</p>
+</div>
+
+</div>
+
+<div class="hero">
+
+<h2>Merhaba 👋</h2>
+
+<p>İhtiyacın olan aracı hemen bul.</p>
+
+</div>
+
+<div class="search-box">
+
+<span class="search-icon">🔎</span>
+
+<input
+id="search"
+type="text"
+placeholder="Araçlarda ara..."
+oninput="ara()"
+>
+
+</div>
+
+</div>
+
 </header>
 
-<div class="top">
-    <input
-        class="search"
-        id="search"
-        placeholder="🔎 Araç ara..."
-        oninput="ara()"
-    >
 
-    <div class="buttons">
-        <button onclick="tema()">🌙 Tema</button>
-    </div>
+<!-- MAIN -->
+
+<main class="container">
+
+
+<!-- QUICK -->
+
+<div class="section-title">
+
+<h3>⭐ Hızlı Erişim</h3>
+
+<span>Favorilerin</span>
+
 </div>
 
-<div class="container">
+<div class="quick">
 
-<div class="cards">
+<div class="quick-card" onclick="ac('hesap')">
 
-<div class="card" data-name="hesap makinesi" onclick="ac('hesap')">
 <div class="icon">🧮</div>
-<h3>Hesap Makinesi</h3>
+
+<strong>Hesap Makinesi</strong>
+
 </div>
 
-<div class="card" data-name="yakıt hesaplayıcı" onclick="ac('yakit')">
+<div class="quick-card" onclick="ac('yakit')">
+
 <div class="icon">🚗</div>
-<h3>Yakıt Hesaplayıcı</h3>
+
+<strong>Yakıt</strong>
+
 </div>
 
-<div class="card" data-name="yaş hesaplama" onclick="ac('yas')">
-<div class="icon">🎂</div>
-<h3>Yaş Hesaplama</h3>
-</div>
+<div class="quick-card" onclick="ac('indirim')">
 
-<div class="card" data-name="birim dönüştürücü" onclick="ac('birim')">
-<div class="icon">📏</div>
-<h3>Birim Dönüştürücü</h3>
-</div>
-
-<div class="card" data-name="yüzde hesaplama" onclick="ac('yuzde')">
-<div class="icon">📊</div>
-<h3>Yüzde Hesaplama</h3>
-</div>
-
-<div class="card" data-name="kdv hesaplama" onclick="ac('kdv')">
-<div class="icon">🧾</div>
-<h3>KDV Hesaplama</h3>
-</div>
-
-<div class="card" data-name="indirim hesaplama" onclick="ac('indirim')">
 <div class="icon">💸</div>
-<h3>İndirim Hesaplama</h3>
+
+<strong>İndirim</strong>
+
 </div>
 
-<div class="card" data-name="taksit hesaplama" onclick="ac('taksit')">
-<div class="icon">💳</div>
-<h3>Taksit Hesaplama</h3>
-</div>
+<div class="quick-card" onclick="ac('qr')">
 
-<div class="card" data-name="zamanlayıcı" onclick="ac('zaman')">
-<div class="icon">⏱️</div>
-<h3>Zamanlayıcı</h3>
-</div>
-
-<div class="card" data-name="şifre oluşturucu" onclick="ac('sifre')">
-<div class="icon">🔐</div>
-<h3>Şifre Oluşturucu</h3>
-</div>
-
-<div class="card" data-name="tarih hesaplama" onclick="ac('tarih')">
-<div class="icon">📅</div>
-<h3>Tarih Hesaplama</h3>
-</div>
-
-<div class="card" data-name="qr kod oluşturucu" onclick="ac('qr')">
 <div class="icon">📱</div>
-<h3>QR Kod Oluşturucu</h3>
-</div>
+
+<strong>QR Kod</strong>
 
 </div>
 
+</div>
 
-<!-- HESAP MAKİNESİ -->
+
+<!-- CATEGORIES -->
+
+<div class="section-title">
+
+<h3>Araçlar</h3>
+
+<span id="toolCount">12 araç</span>
+
+</div>
+
+<div class="categories">
+
+<button class="category active" onclick="kategori('hepsi',this)">
+Tümü
+</button>
+
+<button class="category" onclick="kategori('hesap',this)">
+🧮 Hesaplama
+</button>
+
+<button class="category" onclick="kategori('arac',this)">
+🚗 Araç
+</button>
+
+<button class="category" onclick="kategori('zaman',this)">
+⏱️ Zaman
+</button>
+
+<button class="category" onclick="kategori('diger',this)">
+🛠️ Diğer
+</button>
+
+</div>
+
+
+<!-- TOOLS -->
+
+<div class="tools" id="tools">
+
+
+<div class="card" data-name="hesap makinesi" data-category="hesap" onclick="ac('hesap')">
+
+<button class="star" onclick="favori(event,this,'hesap makinesi')">☆</button>
+
+<div class="tool-icon">🧮</div>
+
+<h4>Hesap Makinesi</h4>
+
+<p>Toplama, çıkarma, çarpma ve bölme.</p>
+
+</div>
+
+
+<div class="card" data-name="yakıt hesaplayıcı" data-category="arac" onclick="ac('yakit')">
+
+<button class="star" onclick="favori(event,this,'yakıt hesaplayıcı')">☆</button>
+
+<div class="tool-icon">🚗</div>
+
+<h4>Yakıt Hesaplayıcı</h4>
+
+<p>Yakıt tüketimini ve maliyetini hesapla.</p>
+
+</div>
+
+
+<div class="card" data-name="yaş hesaplama" data-category="hesap" onclick="ac('yas')">
+
+<button class="star" onclick="favori(event,this,'yaş hesaplama')">☆</button>
+
+<div class="tool-icon">🎂</div>
+
+<h4>Yaş Hesaplama</h4>
+
+<p>Doğum tarihinden yaşını hesapla.</p>
+
+</div>
+
+
+<div class="card" data-name="birim dönüştürücü" data-category="hesap" onclick="ac('birim')">
+
+<button class="star" onclick="favori(event,this,'birim dönüştürücü')">☆</button>
+
+<div class="tool-icon">📏</div>
+
+<h4>Birim Dönüştürücü</h4>
+
+<p>Km, mil, kg, pound ve daha fazlası.</p>
+
+</div>
+
+
+<div class="card" data-name="yüzde hesaplama" data-category="hesap" onclick="ac('yuzde')">
+
+<button class="star" onclick="favori(event,this,'yüzde hesaplama')">☆</button>
+
+<div class="tool-icon">📊</div>
+
+<h4>Yüzde Hesaplama</h4>
+
+<p>Yüzde değerlerini hızlıca hesapla.</p>
+
+</div>
+
+
+<div class="card" data-name="kdv hesaplama" data-category="hesap" onclick="ac('kdv')">
+
+<button class="star" onclick="favori(event,this,'kdv hesaplama')">☆</button>
+
+<div class="tool-icon">🧾</div>
+
+<h4>KDV Hesaplama</h4>
+
+<p>KDV dahil ve hariç fiyatı bul.</p>
+
+</div>
+
+
+<div class="card" data-name="indirim hesaplama" data-category="hesap" onclick="ac('indirim')">
+
+<button class="star" onclick="favori(event,this,'indirim hesaplama')">☆</button>
+
+<div class="tool-icon">💸</div>
+
+<h4>İndirim Hesaplama</h4>
+
+<p>İndirimli ürün fiyatını hesapla.</p>
+
+</div>
+
+
+<div class="card" data-name="taksit hesaplama" data-category="hesap" onclick="ac('taksit')">
+
+<button class="star" onclick="favori(event,this,'taksit hesaplama')">☆</button>
+
+<div class="tool-icon">💳</div>
+
+<h4>Taksit Hesaplama</h4>
+
+<p>Aylık taksit tutarını bul.</p>
+
+</div>
+
+
+<div class="card" data-name="zamanlayıcı" data-category="zaman" onclick="ac('zaman')">
+
+<button class="star" onclick="favori(event,this,'zamanlayıcı')">☆</button>
+
+<div class="tool-icon">⏱️</div>
+
+<h4>Zamanlayıcı</h4>
+
+<p>Geri sayım başlat.</p>
+
+</div>
+
+
+<div class="card" data-name="şifre oluşturucu" data-category="diger" onclick="ac('sifre')">
+
+<button class="star" onclick="favori(event,this,'şifre oluşturucu')">☆</button>
+
+<div class="tool-icon">🔐</div>
+
+<h4>Şifre Oluşturucu</h4>
+
+<p>Güçlü rastgele şifre oluştur.</p>
+
+</div>
+
+
+<div class="card" data-name="tarih hesaplama" data-category="hesap" onclick="ac('tarih')">
+
+<button class="star" onclick="favori(event,this,'tarih hesaplama')">☆</button>
+
+<div class="tool-icon">📅</div>
+
+<h4>Tarih Hesaplama</h4>
+
+<p>İki tarih arasındaki günleri bul.</p>
+
+</div>
+
+
+<div class="card" data-name="qr kod oluşturucu" data-category="diger" onclick="ac('qr')">
+
+<button class="star" onclick="favori(event,this,'qr kod oluşturucu')">☆</button>
+
+<div class="tool-icon">📱</div>
+
+<h4>QR Kod Oluşturucu</h4>
+
+<p>Metin, telefon veya link için QR oluştur.</p>
+
+</div>
+
+
+</div>
+
+
+<!-- HESAP -->
 
 <div class="tool" id="hesap">
+
 <h2>🧮 Hesap Makinesi</h2>
 
 <input id="sayi1" type="number" placeholder="Birinci sayı">
+
 <input id="sayi2" type="number" placeholder="İkinci sayı">
 
 <button class="action" onclick="hesapla('+')">➕ Topla</button>
+
 <button class="action" onclick="hesapla('-')">➖ Çıkar</button>
+
 <button class="action" onclick="hesapla('*')">✖️ Çarp</button>
+
 <button class="action" onclick="hesapla('/')">➗ Böl</button>
 
 <div class="result" id="hesapSonuc"></div>
 
 <button class="action back" onclick="kapat()">← Araçlara Dön</button>
+
 </div>
 
 
 <!-- YAKIT -->
 
 <div class="tool" id="yakit">
+
 <h2>🚗 Yakıt Hesaplayıcı</h2>
 
 <input id="km" type="number" placeholder="Kaç km gittin?">
+
 <input id="litre" type="number" placeholder="Kaç litre yaktın?">
+
 <input id="fiyat" type="number" placeholder="Litre fiyatı (TL)">
 
 <button class="action" onclick="yakitHesapla()">⛽ Hesapla</button>
@@ -312,12 +744,14 @@ footer{
 <div class="result" id="yakitSonuc"></div>
 
 <button class="action back" onclick="kapat()">← Araçlara Dön</button>
+
 </div>
 
 
 <!-- YAŞ -->
 
 <div class="tool" id="yas">
+
 <h2>🎂 Yaş Hesaplama</h2>
 
 <input id="dogum" type="date">
@@ -327,23 +761,32 @@ footer{
 <div class="result" id="yasSonuc"></div>
 
 <button class="action back" onclick="kapat()">← Araçlara Dön</button>
+
 </div>
 
 
 <!-- BİRİM -->
 
 <div class="tool" id="birim">
+
 <h2>📏 Birim Dönüştürücü</h2>
 
 <input id="birimDeger" type="number" placeholder="Değer">
 
 <select id="birimSec">
+
 <option value="km-mil">Kilometre → Mil</option>
+
 <option value="mil-km">Mil → Kilometre</option>
+
 <option value="kg-lb">Kilogram → Pound</option>
+
 <option value="lb-kg">Pound → Kilogram</option>
+
 <option value="m-ft">Metre → Feet</option>
+
 <option value="ft-m">Feet → Metre</option>
+
 </select>
 
 <button class="action" onclick="birimHesapla()">Dönüştür</button>
@@ -351,15 +794,18 @@ footer{
 <div class="result" id="birimSonuc"></div>
 
 <button class="action back" onclick="kapat()">← Araçlara Dön</button>
+
 </div>
 
 
 <!-- YÜZDE -->
 
 <div class="tool" id="yuzde">
+
 <h2>📊 Yüzde Hesaplama</h2>
 
 <input id="yuzdeSayi" type="number" placeholder="Sayı">
+
 <input id="yuzdeOran" type="number" placeholder="Yüzde (%)">
 
 <button class="action" onclick="yuzdeHesapla()">Hesapla</button>
@@ -367,31 +813,37 @@ footer{
 <div class="result" id="yuzdeSonuc"></div>
 
 <button class="action back" onclick="kapat()">← Araçlara Dön</button>
+
 </div>
 
 
 <!-- KDV -->
 
 <div class="tool" id="kdv">
+
 <h2>🧾 KDV Hesaplama</h2>
 
 <input id="kdvFiyat" type="number" placeholder="Fiyat (TL)">
-<input id="kdvOran" type="number" placeholder="KDV oranı (%)" value="20">
+
+<input id="kdvOran" type="number" value="20" placeholder="KDV oranı (%)">
 
 <button class="action" onclick="kdvHesapla()">Hesapla</button>
 
 <div class="result" id="kdvSonuc"></div>
 
 <button class="action back" onclick="kapat()">← Araçlara Dön</button>
+
 </div>
 
 
 <!-- İNDİRİM -->
 
 <div class="tool" id="indirim">
+
 <h2>💸 İndirim Hesaplama</h2>
 
 <input id="indirimFiyat" type="number" placeholder="Ürün fiyatı">
+
 <input id="indirimOran" type="number" placeholder="İndirim (%)">
 
 <button class="action" onclick="indirimHesapla()">Hesapla</button>
@@ -399,15 +851,18 @@ footer{
 <div class="result" id="indirimSonuc"></div>
 
 <button class="action back" onclick="kapat()">← Araçlara Dön</button>
+
 </div>
 
 
 <!-- TAKSİT -->
 
 <div class="tool" id="taksit">
+
 <h2>💳 Taksit Hesaplama</h2>
 
 <input id="taksitFiyat" type="number" placeholder="Toplam fiyat (TL)">
+
 <input id="taksitSayi" type="number" placeholder="Taksit sayısı">
 
 <button class="action" onclick="taksitHesapla()">Hesapla</button>
@@ -415,46 +870,54 @@ footer{
 <div class="result" id="taksitSonuc"></div>
 
 <button class="action back" onclick="kapat()">← Araçlara Dön</button>
+
 </div>
 
 
-<!-- ZAMANLAYICI -->
+<!-- ZAMAN -->
 
 <div class="tool" id="zaman">
+
 <h2>⏱️ Zamanlayıcı</h2>
 
 <input id="sure" type="number" placeholder="Süre (saniye)">
 
 <button class="action" onclick="baslat()">▶️ Başlat</button>
+
 <button class="action" onclick="durdur()">⏹️ Durdur</button>
 
 <div class="result" id="zamanSonuc">0</div>
 
 <button class="action back" onclick="kapat()">← Araçlara Dön</button>
+
 </div>
 
 
 <!-- ŞİFRE -->
 
 <div class="tool" id="sifre">
+
 <h2>🔐 Şifre Oluşturucu</h2>
 
-<input id="sifreUzunluk" type="number" value="12" placeholder="Şifre uzunluğu">
+<input id="sifreUzunluk" type="number" value="12">
 
 <button class="action" onclick="sifreOlustur()">🔑 Şifre Oluştur</button>
 
 <div class="result" id="sifreSonuc"></div>
 
 <button class="action back" onclick="kapat()">← Araçlara Dön</button>
+
 </div>
 
 
 <!-- TARİH -->
 
 <div class="tool" id="tarih">
+
 <h2>📅 Tarih Hesaplama</h2>
 
 <input id="tarih1" type="date">
+
 <input id="tarih2" type="date">
 
 <button class="action" onclick="tarihHesapla()">Hesapla</button>
@@ -462,12 +925,14 @@ footer{
 <div class="result" id="tarihSonuc"></div>
 
 <button class="action back" onclick="kapat()">← Araçlara Dön</button>
+
 </div>
 
 
 <!-- QR -->
 
 <div class="tool" id="qr">
+
 <h2>📱 QR Kod Oluşturucu</h2>
 
 <input id="qrMetin" placeholder="Metin, telefon numarası veya link">
@@ -477,95 +942,240 @@ footer{
 <div id="qrcode"></div>
 
 <button class="action back" onclick="kapat()">← Araçlara Dön</button>
-</div>
 
 </div>
+
+</main>
+
 
 <footer>
-Cep Asistanım • 2026
+
+⚡ Cep Asistanım<br>
+
+Günlük hayatını kolaylaştırır.
+
 </footer>
 
 
 <script>
 
+/* ARAÇ AÇ */
+
 function ac(id){
-    document.querySelectorAll('.tool').forEach(x=>x.classList.remove('active'));
+
+    document.querySelectorAll('.tool').forEach(function(tool){
+        tool.classList.remove('active');
+    });
+
     document.getElementById(id).classList.add('active');
-    window.scrollTo({top:0,behavior:'smooth'});
+
+    window.scrollTo({
+        top:0,
+        behavior:'smooth'
+    });
+
 }
+
+
+/* ARAÇLARI KAPAT */
 
 function kapat(){
-    document.querySelectorAll('.tool').forEach(x=>x.classList.remove('active'));
-    window.scrollTo({top:0,behavior:'smooth'});
+
+    document.querySelectorAll('.tool').forEach(function(tool){
+        tool.classList.remove('active');
+    });
+
 }
 
-function tema(){
-    document.body.classList.toggle('dark');
-}
+
+/* ARAMA */
 
 function ara(){
-    let arama=document.getElementById('search').value.toLowerCase();
 
-    document.querySelectorAll('.card').forEach(card=>{
-        card.style.display=
-        card.dataset.name.toLowerCase().includes(arama)
-        ? 'block'
-        : 'none';
+    let text=document.getElementById('search').value.toLowerCase();
+
+    let cards=document.querySelectorAll('.card');
+
+    let count=0;
+
+    cards.forEach(function(card){
+
+        let name=card.dataset.name.toLowerCase();
+
+        if(name.includes(text)){
+
+            card.style.display='block';
+
+            count++;
+
+        }else{
+
+            card.style.display='none';
+
+        }
+
     });
+
+    document.getElementById('toolCount').innerText=count+' araç';
+
 }
 
+
+/* KATEGORİ */
+
+function kategori(cat,button){
+
+    document.querySelectorAll('.category').forEach(function(x){
+        x.classList.remove('active');
+    });
+
+    button.classList.add('active');
+
+    let cards=document.querySelectorAll('.card');
+
+    let count=0;
+
+    cards.forEach(function(card){
+
+        if(cat==='hepsi' || card.dataset.category===cat){
+
+            card.style.display='block';
+
+            count++;
+
+        }else{
+
+            card.style.display='none';
+
+        }
+
+    });
+
+    document.getElementById('toolCount').innerText=count+' araç';
+
+}
+
+
+/* FAVORİ */
+
+function favori(event,button,name){
+
+    event.stopPropagation();
+
+    button.classList.toggle('favorite');
+
+    if(button.classList.contains('favorite')){
+
+        button.innerText='★';
+
+        localStorage.setItem('fav_'+name,'1');
+
+    }else{
+
+        button.innerText='☆';
+
+        localStorage.removeItem('fav_'+name);
+
+    }
+
+}
+
+
+/* HESAP */
+
 function hesapla(islem){
+
     let a=parseFloat(document.getElementById('sayi1').value);
+
     let b=parseFloat(document.getElementById('sayi2').value);
 
     if(isNaN(a)||isNaN(b)){
-        document.getElementById('hesapSonuc').innerText='Lütfen iki sayı gir.';
+
+        document.getElementById('hesapSonuc').innerText=
+        'Lütfen iki sayı gir.';
+
         return;
+
     }
 
     let sonuc;
 
     if(islem==='+') sonuc=a+b;
+
     if(islem==='-') sonuc=a-b;
+
     if(islem==='*') sonuc=a*b;
+
     if(islem==='/'){
+
         if(b===0){
-            document.getElementById('hesapSonuc').innerText='Sıfıra bölme yapılamaz.';
+
+            document.getElementById('hesapSonuc').innerText=
+            'Sıfıra bölme yapılamaz.';
+
             return;
+
         }
+
         sonuc=a/b;
+
     }
 
-    document.getElementById('hesapSonuc').innerText='Sonuç: '+sonuc;
+    document.getElementById('hesapSonuc').innerText=
+    'Sonuç: '+sonuc;
+
 }
 
+
+/* YAKIT */
+
 function yakitHesapla(){
+
     let km=parseFloat(document.getElementById('km').value);
+
     let litre=parseFloat(document.getElementById('litre').value);
+
     let fiyat=parseFloat(document.getElementById('fiyat').value);
 
-    if(!km||!litre||!fiyat){
-        document.getElementById('yakitSonuc').innerText='Bilgileri eksiksiz gir.';
+    if(isNaN(km)||isNaN(litre)||isNaN(fiyat)||km<=0){
+
+        document.getElementById('yakitSonuc').innerText=
+        'Bilgileri eksiksiz gir.';
+
         return;
+
     }
 
     let tuketim=(litre/km)*100;
+
     let maliyet=litre*fiyat;
+
     let kmMaliyet=maliyet/km;
 
     document.getElementById('yakitSonuc').innerHTML=
     '100 km tüketim: '+tuketim.toFixed(2)+' L<br>'+
     'Toplam maliyet: '+maliyet.toFixed(2)+' TL<br>'+
     '1 km maliyeti: '+kmMaliyet.toFixed(2)+' TL';
+
 }
 
-function yasHesapla(){
-    let dogum=new Date(document.getElementById('dogum').value);
 
-    if(isNaN(dogum)){
-        document.getElementById('yasSonuc').innerText='Doğum tarihini seç.';
+/* YAŞ */
+
+function yasHesapla(){
+
+    let value=document.getElementById('dogum').value;
+
+    if(!value){
+
+        document.getElementById('yasSonuc').innerText=
+        'Doğum tarihini seç.';
+
         return;
+
     }
+
+    let dogum=new Date(value);
 
     let bugun=new Date();
 
@@ -574,84 +1184,136 @@ function yasHesapla(){
     let ay=bugun.getMonth()-dogum.getMonth();
 
     if(ay<0 || (ay===0 && bugun.getDate()<dogum.getDate())){
+
         yas--;
+
     }
 
-    document.getElementById('yasSonuc').innerText='Yaşınız: '+yas;
+    document.getElementById('yasSonuc').innerText=
+    'Yaşınız: '+yas;
+
 }
 
+
+/* BİRİM */
+
 function birimHesapla(){
+
     let d=parseFloat(document.getElementById('birimDeger').value);
+
     let sec=document.getElementById('birimSec').value;
 
     if(isNaN(d)){
-        document.getElementById('birimSonuc').innerText='Değer gir.';
+
+        document.getElementById('birimSonuc').innerText=
+        'Değer gir.';
+
         return;
+
     }
 
     let sonuc;
 
     if(sec==='km-mil') sonuc=d*0.621371;
+
     if(sec==='mil-km') sonuc=d*1.60934;
+
     if(sec==='kg-lb') sonuc=d*2.20462;
+
     if(sec==='lb-kg') sonuc=d*0.453592;
+
     if(sec==='m-ft') sonuc=d*3.28084;
+
     if(sec==='ft-m') sonuc=d*0.3048;
 
     document.getElementById('birimSonuc').innerText=
     'Sonuç: '+sonuc.toFixed(3);
+
 }
 
+
+/* YÜZDE */
+
 function yuzdeHesapla(){
+
     let sayi=parseFloat(document.getElementById('yuzdeSayi').value);
+
     let oran=parseFloat(document.getElementById('yuzdeOran').value);
 
     if(isNaN(sayi)||isNaN(oran)){
-        document.getElementById('yuzdeSonuc').innerText='Bilgileri gir.';
+
+        document.getElementById('yuzdeSonuc').innerText=
+        'Bilgileri gir.';
+
         return;
+
     }
 
     document.getElementById('yuzdeSonuc').innerText=
     'Sonuç: '+(sayi*oran/100).toFixed(2);
+
 }
 
+
+/* KDV */
+
 function kdvHesapla(){
+
     let fiyat=parseFloat(document.getElementById('kdvFiyat').value);
+
     let oran=parseFloat(document.getElementById('kdvOran').value);
 
     if(isNaN(fiyat)||isNaN(oran)) return;
 
     let kdv=fiyat*oran/100;
+
     let toplam=fiyat+kdv;
 
     document.getElementById('kdvSonuc').innerHTML=
     'KDV: '+kdv.toFixed(2)+' TL<br>'+
     'KDV dahil: '+toplam.toFixed(2)+' TL';
+
 }
 
+
+/* İNDİRİM */
+
 function indirimHesapla(){
+
     let fiyat=parseFloat(document.getElementById('indirimFiyat').value);
+
     let oran=parseFloat(document.getElementById('indirimOran').value);
 
     if(isNaN(fiyat)||isNaN(oran)) return;
 
     let indirim=fiyat*oran/100;
+
     let yeni=fiyat-indirim;
 
     document.getElementById('indirimSonuc').innerHTML=
     'İndirim: '+indirim.toFixed(2)+' TL<br>'+
     'Yeni fiyat: '+yeni.toFixed(2)+' TL';
+
 }
 
+
+/* TAKSİT */
+
 function taksitHesapla(){
+
     let fiyat=parseFloat(document.getElementById('taksitFiyat').value);
+
     let sayi=parseInt(document.getElementById('taksitSayi').value);
 
     if(isNaN(fiyat)||isNaN(sayi)||sayi<=0) return;
 
     document.getElementById('taksitSonuc').innerText=
     'Aylık ödeme: '+(fiyat/sayi).toFixed(2)+' TL';
+
 }
+
+
+/* ZAMANLAYICI */
 
 let zamanInterval;
 
@@ -665,27 +1327,37 @@ function baslat(){
 
     document.getElementById('zamanSonuc').innerText=kalan;
 
-    zamanInterval=setInterval(()=>{
+    zamanInterval=setInterval(function(){
 
         kalan--;
 
         document.getElementById('zamanSonuc').innerText=kalan;
 
         if(kalan<=0){
+
             clearInterval(zamanInterval);
+
             alert('⏰ Süre doldu!');
+
         }
 
     },1000);
+
 }
 
 function durdur(){
+
     clearInterval(zamanInterval);
+
 }
+
+
+/* ŞİFRE */
 
 function sifreOlustur(){
 
-    let uzunluk=parseInt(document.getElementById('sifreUzunluk').value)||12;
+    let uzunluk=
+    parseInt(document.getElementById('sifreUzunluk').value)||12;
 
     let karakterler=
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
@@ -693,51 +1365,91 @@ function sifreOlustur(){
     let sifre='';
 
     for(let i=0;i<uzunluk;i++){
+
         sifre+=karakterler.charAt(
             Math.floor(Math.random()*karakterler.length)
         );
+
     }
 
     document.getElementById('sifreSonuc').innerText=sifre;
+
 }
+
+
+/* TARİH */
 
 function tarihHesapla(){
 
     let t1=new Date(document.getElementById('tarih1').value);
+
     let t2=new Date(document.getElementById('tarih2').value);
 
     if(isNaN(t1)||isNaN(t2)) return;
 
     let fark=Math.abs(t2-t1);
 
-    let gun=Math.ceil(fark/(1000*60*60*24));
+    let gun=Math.ceil(
+        fark/(1000*60*60*24)
+    );
 
     document.getElementById('tarihSonuc').innerText=
     'İki tarih arasında '+gun+' gün var.';
+
 }
+
+
+/* QR */
 
 function qrOlustur(){
 
-    let metin=document.getElementById('qrMetin').value.trim();
-    let alan=document.getElementById('qrcode');
+    let metin=
+    document.getElementById('qrMetin').value.trim();
+
+    let alan=
+    document.getElementById('qrcode');
 
     alan.innerHTML='';
 
     if(!metin){
-        alan.innerText='Lütfen metin veya link gir.';
+
+        alan.innerText=
+        'Lütfen metin veya link gir.';
+
         return;
+
     }
 
     let img=document.createElement('img');
 
     img.src=
-    'https://api.qrserver.com/v1/create-qr-code/?size=220x220&data='
-    +encodeURIComponent(metin);
+    'https://api.qrserver.com/v1/create-qr-code/?size=220x220&data='+
+    encodeURIComponent(metin);
 
     img.alt='QR Kod';
 
     alan.appendChild(img);
+
 }
+
+
+/* KAYITLI FAVORİLERİ YÜKLE */
+
+document.querySelectorAll('.star').forEach(function(button){
+
+    let card=button.closest('.card');
+
+    let name=card.dataset.name;
+
+    if(localStorage.getItem('fav_'+name)){
+
+        button.innerText='★';
+
+        button.classList.add('favorite');
+
+    }
+
+});
 
 </script>
 
