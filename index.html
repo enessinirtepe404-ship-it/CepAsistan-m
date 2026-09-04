@@ -4,268 +4,563 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cep Asistanım</title>
+
 <style>
 * {
     box-sizing: border-box;
 }
-:root {
-    --bg: #0b0b0f;
-    --card: #15151c;
-    --card2: #1d1d26;
-    --text: #ffffff;
-    --muted: #9a9aa5;
-    --border: #292933;
-    --button: #ffffff;
-    --buttonText: #111111;
-}
-body.light {
-    --bg: #f2f3f7;
-    --card: #ffffff;
-    --card2: #f0f1f5;
-    --text: #111111;
-    --muted: #666673;
-    --border: #ddddE5;
-    --button: #111111;
-    --buttonText: #ffffff;
-}
+
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
     transition: 0.3s;
 }
-.container {
-    width: 100%;
-    max-width: 520px;
-    margin: auto;
-    padding: 22px 16px 30px;
+
+body.light {
+    background: #f1f5f9;
+    color: #0f172a;
 }
-.header {
+
+header {
     text-align: center;
-    padding: 15px 0 25px;
+    padding: 35px 15px 20px;
 }
+
 .logo {
-    width: 70px;
-    height: 70px;
-    margin: auto;
-    border-radius: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 36px;
-    background: linear-gradient(135deg, #ffffff, #777777);
-    color: #111;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    font-size: 34px;
+    font-weight: bold;
 }
-h1 {
-    margin: 15px 0 5px;
-    font-size: 30px;
-    letter-spacing: -1px;
-}
+
 .subtitle {
-    color: var(--muted);
-    font-size: 15px;
-}
-.theme {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-.theme button {
-    width: auto;
-    padding: 10px 18px;
-    margin: 0;
-    border-radius: 20px;
-    background: var(--card);
-    color: var(--text);
-    border: 1px solid var(--border);
-    font-size: 14px;
-}
-.card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 22px;
-    padding: 21px;
-    margin-bottom: 17px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-}
-.card h2 {
-    margin: 0 0 17px;
-    font-size: 20px;
-}
-input {
-    width: 100%;
-    padding: 15px;
-    margin: 6px 0;
-    border-radius: 13px;
-    border: 1px solid var(--border);
-    background: var(--card2);
-    color: var(--text);
-    outline: none;
-    font-size: 16px;
-}
-input:focus {
-    border-color: #777;
-}
-.actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 9px;
+    color: #94a3b8;
     margin-top: 8px;
 }
-button {
-    width: 100%;
-    padding: 14px;
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    padding: 15px;
+}
+
+.theme-btn {
+    display: block;
+    margin: 0 auto 25px;
+    padding: 10px 18px;
     border: none;
-    border-radius: 13px;
+    border-radius: 12px;
+    cursor: pointer;
+    background: #334155;
+    color: white;
     font-size: 15px;
-    font-weight: 700;
-    background: var(--button);
-    color: var(--buttonText);
+}
+
+body.light .theme-btn {
+    background: #cbd5e1;
+    color: #0f172a;
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 25px;
+}
+
+.menu button {
+    border: none;
+    border-radius: 18px;
+    padding: 22px 10px;
+    background: #1e293b;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
     transition: 0.2s;
 }
-button:active {
-    transform: scale(0.97);
+
+.menu button:hover {
+    transform: translateY(-3px);
+    background: #334155;
 }
+
+body.light .menu button {
+    background: white;
+    color: #0f172a;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.tool {
+    display: none;
+    background: #1e293b;
+    padding: 22px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.tool.active {
+    display: block;
+}
+
+body.light .tool {
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.tool h2 {
+    margin-top: 0;
+}
+
+input, select {
+    width: 100%;
+    padding: 13px;
+    margin: 7px 0;
+    border-radius: 10px;
+    border: 1px solid #475569;
+    background: #0f172a;
+    color: white;
+    font-size: 16px;
+}
+
+body.light input,
+body.light select {
+    background: #f8fafc;
+    color: #0f172a;
+    border-color: #cbd5e1;
+}
+
+.action {
+    width: 100%;
+    padding: 13px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.action:hover {
+    background: #1d4ed8;
+}
+
 .result {
     margin-top: 15px;
-    padding: 17px;
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    text-align: center;
-    font-size: 17px;
-    line-height: 1.5;
+    padding: 13px;
+    border-radius: 10px;
+    background: #0f172a;
+    min-height: 20px;
 }
-.footer {
-    text-align: center;
-    color: var(--muted);
-    margin-top: 25px;
-    font-size: 13px;
+
+body.light .result {
+    background: #f1f5f9;
 }
-@media (max-width: 380px) {
-    h1 {
-        font-size: 26px;
+
+.back {
+    background: #475569;
+    margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #64748b;
+}
+
+@media (max-width: 500px) {
+    .menu {
+        grid-template-columns: 1fr 1fr;
     }
-    .card {
-        padding: 17px;
-    }
-    .actions {
-        grid-template-columns: 1fr;
+
+    .logo {
+        font-size: 29px;
     }
 }
 </style>
 </head>
+
 <body>
+
+<header>
+    <div class="logo">⚡ Cep Asistanım</div>
+    <div class="subtitle">Günlük hayatını kolaylaştır</div>
+</header>
+
 <div class="container">
-    <div class="header">
-        <div class="logo">⚡</div>
-        <h1>Cep Asistanım</h1>
-        <div class="subtitle">
-            Günlük hayatını kolaylaştır
-        </div>
-    </div>
-    <div class="theme">
-        <button onclick="temaDegistir()" id="temaButonu">
-            🌙 Karanlık Mod
-        </button>
-    </div>
-    <div class="card">
-        <h2>🧮 Hesap Makinesi</h2>
-        <input id="sayi1" type="number" placeholder="Birinci sayı">
-        <input id="sayi2" type="number" placeholder="İkinci sayı">
-        <div class="actions">
-            <button onclick="topla()">➕ Topla</button>
-            <button onclick="cikar()">➖ Çıkar</button>
-            <button onclick="carp()">✖️ Çarp</button>
-            <button onclick="bol()">➗ Böl</button>
-        </div>
-        <div class="result" id="hesapSonuc">
-            Sonuç burada görünecek
-        </div>
-    </div>
-    <div class="card">
-        <h2>🚗 Yakıt Hesaplayıcı</h2>
-        <input id="mesafe" type="number" placeholder="Kaç km gittin?">
-        <input id="yakit" type="number" placeholder="Kaç litre yaktın?">
-        <input id="fiyat" type="number" placeholder="Litre fiyatı (TL)">
-        <button onclick="yakitHesapla()">
-            ⛽ Yakıtı Hesapla
-        </button>
-        <div class="result" id="yakitSonuc">
-            Sonuç burada görünecek
-        </div>
-    </div>
-    <div class="footer">
-        Cep Asistanım • 2026
-    </div>
+
+<button class="theme-btn" onclick="temaDegistir()" id="themeButton">
+    🌙 Karanlık Mod
+</button>
+
+<!-- ANA MENÜ -->
+<div class="menu" id="menu">
+
+    <button onclick="ac('hesap')">
+        🧮<br><br>Hesap Makinesi
+    </button>
+
+    <button onclick="ac('yakit')">
+        🚗<br><br>Yakıt Hesaplayıcı
+    </button>
+
+    <button onclick="ac('yas')">
+        🎂<br><br>Yaş Hesaplama
+    </button>
+
+    <button onclick="ac('birim')">
+        📏<br><br>Birim Dönüştürücü
+    </button>
+
+    <button onclick="ac('yuzde')">
+        📊<br><br>Yüzde Hesaplama
+    </button>
+
+    <button onclick="ac('kdv')">
+        🧾<br><br>KDV Hesaplama
+    </button>
+
 </div>
+
+
+<!-- HESAP MAKİNESİ -->
+<div class="tool" id="hesap">
+
+<h2>🧮 Hesap Makinesi</h2>
+
+<input type="number" id="sayi1" placeholder="1. sayı">
+<input type="number" id="sayi2" placeholder="2. sayı">
+
+<button class="action" onclick="hesapla('+')">➕ Topla</button>
+<button class="action" onclick="hesapla('-')">➖ Çıkar</button>
+<button class="action" onclick="hesapla('*')">✖️ Çarp</button>
+<button class="action" onclick="hesapla('/')">➗ Böl</button>
+
+<div class="result" id="hesapSonuc"></div>
+
+<button class="action back" onclick="anaMenu()">← Ana Menü</button>
+
+</div>
+
+
+<!-- YAKIT -->
+<div class="tool" id="yakit">
+
+<h2>🚗 Yakıt Hesaplayıcı</h2>
+
+<input type="number" id="mesafe" placeholder="Kaç km gittin?">
+<input type="number" id="yakitMiktar" placeholder="Kaç litre yakıt harcadın?">
+<input type="number" id="litreFiyat" placeholder="1 litre yakıt kaç TL?">
+
+<button class="action" onclick="yakitHesapla()">
+    Hesapla
+</button>
+
+<div class="result" id="yakitSonuc"></div>
+
+<button class="action back" onclick="anaMenu()">← Ana Menü</button>
+
+</div>
+
+
+<!-- YAŞ -->
+<div class="tool" id="yas">
+
+<h2>🎂 Yaş Hesaplama</h2>
+
+<input type="date" id="dogumTarihi">
+
+<button class="action" onclick="yasHesapla()">
+    Yaşımı Hesapla
+</button>
+
+<div class="result" id="yasSonuc"></div>
+
+<button class="action back" onclick="anaMenu()">← Ana Menü</button>
+
+</div>
+
+
+<!-- BİRİM -->
+<div class="tool" id="birim">
+
+<h2>📏 Birim Dönüştürücü</h2>
+
+<input type="number" id="birimDeger" placeholder="Değer gir">
+
+<select id="birimSec">
+    <option value="km-mil">Kilometre → Mil</option>
+    <option value="mil-km">Mil → Kilometre</option>
+    <option value="kg-lb">Kilogram → Pound</option>
+    <option value="lb-kg">Pound → Kilogram</option>
+    <option value="c-f">Celsius → Fahrenheit</option>
+    <option value="f-c">Fahrenheit → Celsius</option>
+</select>
+
+<button class="action" onclick="birimHesapla()">
+    Dönüştür
+</button>
+
+<div class="result" id="birimSonuc"></div>
+
+<button class="action back" onclick="anaMenu()">← Ana Menü</button>
+
+</div>
+
+
+<!-- YÜZDE -->
+<div class="tool" id="yuzde">
+
+<h2>📊 Yüzde Hesaplama</h2>
+
+<input type="number" id="yuzdeSayi" placeholder="Sayı">
+<input type="number" id="yuzdeOran" placeholder="Yüzde oranı">
+
+<button class="action" onclick="yuzdeHesapla()">
+    Hesapla
+</button>
+
+<div class="result" id="yuzdeSonuc"></div>
+
+<button class="action back" onclick="anaMenu()">← Ana Menü</button>
+
+</div>
+
+
+<!-- KDV -->
+<div class="tool" id="kdv">
+
+<h2>🧾 KDV Hesaplama</h2>
+
+<input type="number" id="kdvTutar" placeholder="Tutar (TL)">
+
+<select id="kdvOran">
+    <option value="20">%20 KDV</option>
+    <option value="10">%10 KDV</option>
+    <option value="1">%1 KDV</option>
+</select>
+
+<button class="action" onclick="kdvHesapla()">
+    Hesapla
+</button>
+
+<div class="result" id="kdvSonuc"></div>
+
+<button class="action back" onclick="anaMenu()">← Ana Menü</button>
+
+</div>
+
+</div>
+
+<footer>
+    Cep Asistanım • 2026
+</footer>
+
+
 <script>
-function sayilariAl() {
+
+function ac(id) {
+    document.getElementById("menu").style.display = "none";
+
+    document.querySelectorAll(".tool").forEach(function(tool) {
+        tool.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+}
+
+function anaMenu() {
+    document.querySelectorAll(".tool").forEach(function(tool) {
+        tool.classList.remove("active");
+    });
+
+    document.getElementById("menu").style.display = "grid";
+}
+
+
+function hesapla(islem) {
+
     let a = Number(document.getElementById("sayi1").value);
     let b = Number(document.getElementById("sayi2").value);
-    return [a, b];
-}
-function topla() {
-    let [a, b] = sayilariAl();
-    document.getElementById("hesapSonuc").innerText =
-        "Sonuç: " + (a + b);
-}
-function cikar() {
-    let [a, b] = sayilariAl();
-    document.getElementById("hesapSonuc").innerText =
-        "Sonuç: " + (a - b);
-}
-function carp() {
-    let [a, b] = sayilariAl();
-    document.getElementById("hesapSonuc").innerText =
-        "Sonuç: " + (a * b);
-}
-function bol() {
-    let [a, b] = sayilariAl();
-    if (b === 0) {
+
+    if (isNaN(a) || isNaN(b)) {
         document.getElementById("hesapSonuc").innerText =
-            "Sıfıra bölme yapılamaz.";
+            "Lütfen iki sayı da gir.";
         return;
     }
+
+    let sonuc;
+
+    if (islem === "+") sonuc = a + b;
+    if (islem === "-") sonuc = a - b;
+    if (islem === "*") sonuc = a * b;
+
+    if (islem === "/") {
+        if (b === 0) {
+            document.getElementById("hesapSonuc").innerText =
+                "Sıfıra bölme yapılamaz.";
+            return;
+        }
+
+        sonuc = a / b;
+    }
+
     document.getElementById("hesapSonuc").innerText =
-        "Sonuç: " + (a / b);
+        "Sonuç: " + sonuc;
 }
+
+
 function yakitHesapla() {
-    let mesafe =
-        Number(document.getElementById("mesafe").value);
-    let yakit =
-        Number(document.getElementById("yakit").value);
-    let fiyat =
-        Number(document.getElementById("fiyat").value);
+
+    let mesafe = Number(document.getElementById("mesafe").value);
+    let yakit = Number(document.getElementById("yakitMiktar").value);
+    let fiyat = Number(document.getElementById("litreFiyat").value);
+
     if (mesafe <= 0 || yakit <= 0 || fiyat <= 0) {
         document.getElementById("yakitSonuc").innerText =
-            "Lütfen tüm bilgileri gir.";
+            "Lütfen tüm alanları doğru doldur.";
         return;
     }
+
     let tuketim = (yakit / mesafe) * 100;
     let maliyet = yakit * fiyat;
+
     document.getElementById("yakitSonuc").innerHTML =
-        "⛽ 100 km'de: <b>" +
-        tuketim.toFixed(2) +
-        " litre</b><br><br>" +
-        "💰 Toplam yakıt maliyeti: <b>" +
-        maliyet.toFixed(2) +
-        " TL</b>";
+        "⛽ 100 km'de: " + tuketim.toFixed(2) + " litre<br>" +
+        "💰 Toplam yakıt maliyeti: " + maliyet.toFixed(2) + " TL";
 }
+
+
+function yasHesapla() {
+
+    let dogum = document.getElementById("dogumTarihi").value;
+
+    if (!dogum) {
+        document.getElementById("yasSonuc").innerText =
+            "Lütfen doğum tarihini seç.";
+        return;
+    }
+
+    let dogumTarihi = new Date(dogum);
+    let bugun = new Date();
+
+    let yas = bugun.getFullYear() - dogumTarihi.getFullYear();
+
+    let ay = bugun.getMonth() - dogumTarihi.getMonth();
+
+    if (
+        ay < 0 ||
+        (ay === 0 && bugun.getDate() < dogumTarihi.getDate())
+    ) {
+        yas--;
+    }
+
+    document.getElementById("yasSonuc").innerText =
+        "🎉 Yaşın: " + yas;
+}
+
+
+function birimHesapla() {
+
+    let deger = Number(document.getElementById("birimDeger").value);
+    let secim = document.getElementById("birimSec").value;
+
+    if (isNaN(deger)) {
+        document.getElementById("birimSonuc").innerText =
+            "Lütfen bir değer gir.";
+        return;
+    }
+
+    let sonuc;
+    let birim;
+
+    if (secim === "km-mil") {
+        sonuc = deger * 0.621371;
+        birim = "mil";
+    }
+
+    if (secim === "mil-km") {
+        sonuc = deger * 1.60934;
+        birim = "km";
+    }
+
+    if (secim === "kg-lb") {
+        sonuc = deger * 2.20462;
+        birim = "lb";
+    }
+
+    if (secim === "lb-kg") {
+        sonuc = deger * 0.453592;
+        birim = "kg";
+    }
+
+    if (secim === "c-f") {
+        sonuc = (deger * 9 / 5) + 32;
+        birim = "°F";
+    }
+
+    if (secim === "f-c") {
+        sonuc = (deger - 32) * 5 / 9;
+        birim = "°C";
+    }
+
+    document.getElementById("birimSonuc").innerText =
+        "Sonuç: " + sonuc.toFixed(2) + " " + birim;
+}
+
+
+function yuzdeHesapla() {
+
+    let sayi = Number(document.getElementById("yuzdeSayi").value);
+    let oran = Number(document.getElementById("yuzdeOran").value);
+
+    if (isNaN(sayi) || isNaN(oran)) {
+        document.getElementById("yuzdeSonuc").innerText =
+            "Lütfen iki alanı da doldur.";
+        return;
+    }
+
+    let sonuc = sayi * oran / 100;
+
+    document.getElementById("yuzdeSonuc").innerText =
+        "%" + oran + " = " + sonuc;
+}
+
+
+function kdvHesapla() {
+
+    let tutar = Number(document.getElementById("kdvTutar").value);
+    let oran = Number(document.getElementById("kdvOran").value);
+
+    if (tutar <= 0) {
+        document.getElementById("kdvSonuc").innerText =
+            "Lütfen geçerli bir tutar gir.";
+        return;
+    }
+
+    let kdv = tutar * oran / 100;
+    let toplam = tutar + kdv;
+
+    document.getElementById("kdvSonuc").innerHTML =
+        "KDV: " + kdv.toFixed(2) + " TL<br>" +
+        "KDV dahil toplam: " + toplam.toFixed(2) + " TL";
+}
+
+
 function temaDegistir() {
+
     document.body.classList.toggle("light");
-    let buton =
-        document.getElementById("temaButonu");
+
+    let buton = document.getElementById("themeButton");
+
     if (document.body.classList.contains("light")) {
-        buton.innerText = "☀️ Aydınlık Mod";
-    } else {
         buton.innerText = "🌙 Karanlık Mod";
+    } else {
+        buton.innerText = "☀️ Aydınlık Mod";
     }
 }
+
 </script>
+
 </body>
 </html>
