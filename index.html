@@ -34,31 +34,52 @@ h1 {
     margin-bottom: 25px;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
 .card {
     background: #1e1e1e;
     border-radius: 18px;
-    padding: 25px 15px;
-    text-align: center;
-    font-size: 18px;
+    padding: 20px;
+    margin-bottom: 15px;
     border: 1px solid #333;
 }
 
-.icon {
-    font-size: 35px;
-    display: block;
-    margin-bottom: 10px;
+.card h2 {
+    margin-top: 0;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 7px 0;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #fff;
+    color: #111;
+}
+
+.result {
+    margin-top: 15px;
+    padding: 15px;
+    background: #292929;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
 }
 
 .footer {
     text-align: center;
     color: #777;
-    margin-top: 30px;
+    margin-top: 25px;
     font-size: 13px;
 }
 </style>
@@ -74,45 +95,146 @@ h1 {
 Günlük hayatını kolaylaştır
 </div>
 
-<div class="grid">
+<!-- HESAP MAKİNESİ -->
 
 <div class="card">
-<span class="icon">🧮</span>
-Hesap Makinesi
+
+<h2>🧮 Hesap Makinesi</h2>
+
+<input id="sayi1" type="number" placeholder="Birinci sayı">
+
+<input id="sayi2" type="number" placeholder="İkinci sayı">
+
+<button onclick="topla()">➕ Topla</button>
+
+<button onclick="cikar()">➖ Çıkar</button>
+
+<button onclick="carp()">✖️ Çarp</button>
+
+<button onclick="bol()">➗ Böl</button>
+
+<div class="result" id="hesapSonuc">
+Sonuç burada görünecek
 </div>
+
+</div>
+
+
+<!-- YAKIT HESAPLAYICI -->
 
 <div class="card">
-<span class="icon">💰</span>
-Harcama Takibi
-</div>
 
-<div class="card">
-<span class="icon">🚗</span>
-Araç Asistanı
-</div>
+<h2>🚗 Yakıt Hesaplayıcı</h2>
 
-<div class="card">
-<span class="icon">🔐</span>
-Şifre Oluştur
-</div>
+<input id="mesafe" type="number" placeholder="Kaç km gittin?">
 
-<div class="card">
-<span class="icon">⏱️</span>
-Sayaç
-</div>
+<input id="yakit" type="number" placeholder="Kaç litre yaktın?">
 
-<div class="card">
-<span class="icon">📋</span>
-Notlar
+<input id="fiyat" type="number" placeholder="Litre fiyatı (TL)">
+
+<button onclick="yakitHesapla()">
+⛽ Hesapla
+</button>
+
+<div class="result" id="yakitSonuc">
+Sonuç burada görünecek
 </div>
 
 </div>
+
 
 <div class="footer">
 Cep Asistanım • 2026
 </div>
 
 </div>
+
+
+<script>
+
+function sayilariAl() {
+
+    let a = Number(document.getElementById("sayi1").value);
+    let b = Number(document.getElementById("sayi2").value);
+
+    return [a,b];
+}
+
+function topla() {
+
+    let [a,b] = sayilariAl();
+
+    document.getElementById("hesapSonuc").innerText =
+    "Sonuç: " + (a + b);
+}
+
+function cikar() {
+
+    let [a,b] = sayilariAl();
+
+    document.getElementById("hesapSonuc").innerText =
+    "Sonuç: " + (a - b);
+}
+
+function carp() {
+
+    let [a,b] = sayilariAl();
+
+    document.getElementById("hesapSonuc").innerText =
+    "Sonuç: " + (a * b);
+}
+
+function bol() {
+
+    let [a,b] = sayilariAl();
+
+    if (b === 0) {
+
+        document.getElementById("hesapSonuc").innerText =
+        "Sıfıra bölme yapılamaz.";
+
+        return;
+    }
+
+    document.getElementById("hesapSonuc").innerText =
+    "Sonuç: " + (a / b);
+}
+
+
+function yakitHesapla() {
+
+    let mesafe =
+    Number(document.getElementById("mesafe").value);
+
+    let yakit =
+    Number(document.getElementById("yakit").value);
+
+    let fiyat =
+    Number(document.getElementById("fiyat").value);
+
+    if (mesafe <= 0 || yakit <= 0 || fiyat <= 0) {
+
+        document.getElementById("yakitSonuc").innerText =
+        "Lütfen tüm bilgileri gir.";
+
+        return;
+    }
+
+    let tuketim = (yakit / mesafe) * 100;
+
+    let maliyet = yakit * fiyat;
+
+    document.getElementById("yakitSonuc").innerHTML =
+    "⛽ 100 km'de: <b>" +
+    tuketim.toFixed(2) +
+    " litre</b><br><br>" +
+
+    "💰 Toplam yakıt maliyeti: <b>" +
+    maliyet.toFixed(2) +
+    " TL</b>";
+}
+
+</script>
 
 </body>
 </html>
